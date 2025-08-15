@@ -3,7 +3,6 @@ const dotenv = require("dotenv");
 const User = require("./models/user.model");
 const Role = require("./models/role.model");
 const Permission = require("./models/permission.model");
-const bcrypt = require("bcryptjs");
 
 dotenv.config();
 
@@ -42,30 +41,31 @@ const seedData = async () => {
 
     console.log("Permissions Created");
 
+    // We now use the field name 'passwordHash' but provide the PLAIN TEXT password.
+    // The User model's pre-save hook will handle the hashing automatically.
     const users = [
       {
         name: "Alice Admin",
         email: "alice.admin@example.com",
-        passwordHash: "Pass@123",
+        passwordHash: "Pass@123", // Provide plain text here
         role: adminRole._id,
       },
       {
         name: "Mark Manager",
         email: "mark.manager@example.com",
-        passwordHash: "Pass@123",
+        passwordHash: "Pass@123", // Provide plain text here
         role: managerRole._id,
       },
       {
         name: "Vicki Viewer",
         email: "vicki.viewer@example.com",
-        passwordHash: "Pass@123",
+        passwordHash: "Pass@123", // Provide plain text here
         role: viewerRole._id,
       },
     ];
 
+    // The hashing logic is removed from this loop.
     for (const userData of users) {
-      const salt = await bcrypt.genSalt(10);
-      userData.passwordHash = await bcrypt.hash(userData.passwordHash, salt);
       await User.create(userData);
     }
 
