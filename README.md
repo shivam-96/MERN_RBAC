@@ -1,24 +1,8 @@
-Of course. Here is a comprehensive README.md file for the project. You can save this file as README.md in the root directory of your project.
 
 MERN Role-Based Access Control (RBAC) Mini-Project
 
 This is a minimal MERN stack application demonstrating end-to-end Role-Based Access Control (RBAC). It includes a JWT-based authentication system, protected routes on both the client and server, and UI elements that render conditionally based on user permissions.
 
-Goal
-
-Build a minimal MERN app with login + role-based page access and one write-gated action to prove RBAC works end-to-end.
-
-Tech Stack
-
-Backend: Node.js, Express, MongoDB, Mongoose
-
-Frontend: React (with Vite), React Router
-
-Authentication: JSON Web Tokens (JWT) stored in httpOnly cookies
-
-Security: bcrypt for password hashing
-
-Other: CORS, dotenv
 
 Features
 
